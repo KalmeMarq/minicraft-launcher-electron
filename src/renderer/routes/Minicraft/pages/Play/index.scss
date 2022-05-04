@@ -1,0 +1,127 @@
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  // min-height: 79%;
+  // max-height: 79%;
+  background: radial-gradient( circle, transparent 50%, black 105%), url(../../../../assets/banner_new1.png);
+  image-rendering: optimizeQuality;
+  background-size: cover;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  background-position: center;
+  z-index: 0;
+}
+
+.play-bar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 60px;
+  min-height: 60px;
+  max-height: 60px;
+  background: #262626;
+  box-shadow: 0 2px 4px #00000077;
+  display: flex;
+  place-items: center;
+  z-index: 0;
+}
+
+$playbtn-default-border: black;
+$playbtn-pressed-border: white;
+$playbtn-top: #27CE40;
+$playbtn-side: #0C6E3D;
+$playbtn-bottom: #064D2A;
+
+$playbtn-default-grad-top: #009147;
+$playbtn-default-grad-bottom: #008542;
+$playbtn-hover-grad-top: #0A8F4C;
+$playbtn-hover-grad-bottom: #0A9B51;
+$playbtn-pressed-grad-top: #008542;
+$playbtn-pressed-grad-bottom: #009147;
+
+.play-button {
+  --border-color: black;
+  --top: #27CE40;
+  --bottom: #064D2A;
+  --grad-top: #009147;
+  --grad-bottom: #008542;
+  --side: #0C6E3D;
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translate(-50%);
+  background: linear-gradient(var(--grad-top) 0%, var(--grad-bottom) 100%);
+  border: none;
+  font-family: 'MinecraftTen';
+  font-size: 1.5rem;
+  text-shadow: 0 2px #00000055;
+  color: white;
+  height: 44px;
+  box-shadow: 2px 2px 0 black;
+  cursor: pointer;
+  box-shadow:
+  // top 
+    0 -1px 0 var(--grad-top),
+    
+    0 -4px 0 var(--top),
+    0 -6px 0 var(--border-color),
+    
+    // sides
+    -4px 0 0 var(--side),
+    -6px 0 0 var(--border-color),
+    4px 0 0 var(--side),
+    6px 0 0 var(--border-color),
+    
+    // corner top right
+    2px -6px 0 var(--border-color),
+    6px -2px 0 var(--border-color),
+    
+    
+    // corner top left
+    -2px -6px 0 var(--border-color),
+    -6px -2px 0 var(--border-color),
+    
+    // bottom
+    0 1px 0 var(--grad-bottom),
+    0 4px 0 var(--bottom),
+    0 6px 0 var(--border-color),
+
+    // corner bottom left
+    -2px 6px 0 var(--border-color),
+    -6px 2px 0 var(--border-color),
+    
+    // corner bottom right
+    2px 6px 0 var(--border-color),
+    6px 2px 0 var(--border-color),
+
+    0 10px 0 rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    --grad-top: #0A8F4C;
+    --grad-bottom: #0A9B51;
+  }
+
+  &:focus {
+    outline: none;
+    --border-color: white;
+    --grad-top: #0A9B51;
+    --grad-bottom: #0A8F4C;
+  }
+  
+  &:active {
+    --border-color: white;
+    --grad-top: #008542;
+    --grad-bottom: #009147;
+    --top: #064D2A;
+    --bottom: #0AA618;
+  }
+
+  &:disabled {
+    --top: #1B902D;
+    --bottom: #04361D;
+    --grad-top: #006532; 
+    --grad-bottom: #005D2E;
+    color: #AAA;
+  }
+}

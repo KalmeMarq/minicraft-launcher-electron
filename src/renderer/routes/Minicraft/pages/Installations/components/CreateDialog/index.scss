@@ -1,0 +1,243 @@
+.Overlay {
+  top: 0;
+  left: 0;
+}
+
+.browse-btn {
+  position: absolute;
+  display: block;
+  width: fit-content;
+  right: 0.3rem;
+  bottom: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 0.2rem 0.3rem;
+  cursor: pointer;
+}
+
+.browse-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.create-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  outline: none;
+  background: hsl(0, 0%, 19%);
+  display: flex;
+  flex-direction: column;
+
+  header {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    width: 100%;
+    height: 61px;
+    min-height: 61px;
+    max-height: 61px;
+    position: relative;
+    border-bottom: 1px solid #373737;
+
+    h2 {
+      font-family: 'Noto Sans Bold';
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 100;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      right: 10px;
+      border-radius: 50%;
+      background: none;
+      border: none;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        background: #ffffff39;
+      }
+    }
+
+    .close-icon {
+      padding: 10px;
+    }
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 0 1rem;
+    gap: 0 0.7rem;
+    width: 100%;
+    height: 72px;
+    min-height: 72px;
+    max-height: 72px;
+    position: relative;
+    border-top: 1px solid #373737;
+  }
+  
+  main {
+    overflow-y: auto;
+    padding: 0 0 2rem 0;
+    height: 100%;
+     
+    .container {
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      margin: auto;
+    }
+  }
+}
+
+.install-input-cont {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+  label {
+    color: white;
+    font-family: 'Noto Sans Bold';
+    font-size: 0.65rem;
+    padding-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  select {
+    background: #131313;
+    border-radius: 2px;
+    color: white;
+    border: 1px solid #131313;
+    padding: 0.3rem 0.45rem;
+    font-size: 0.77rem;
+    height: 32px;
+    font-family: 'Noto Sans';
+
+    &:focus {
+      outline: none;
+      border-color: white;
+    }
+
+    &:hover {
+      background: #0e0e0e;
+    }
+  }
+
+  input[type='text'] {
+    border-radius: 2px;
+    color: white;
+    border: 1px solid #131313;
+    height: 32px;
+    background: #131313;
+    padding: 0.45rem 0.6rem;
+
+    &:focus {
+      outline: none;
+      border-color: white;
+    }
+
+    &:hover {
+      background: #0e0e0e;
+    }
+  }
+
+  .browse-input {
+    display: flex;
+    border-radius: 2px;
+    background: #131313;
+    border: 1px solid transparent;
+
+    input[type='text'] {
+      border-radius: 0;
+      border: none;
+      height: 32px;
+      background: none;
+      width: 100%;
+      padding-right: 0.4rem;
+    }
+
+    &:focus-within {
+      border-color: white;
+    }
+
+    .browse-btn-cont {
+      position: relative;
+      padding-right: 6px;
+    }
+
+    .browse-button {
+      background: none;
+      border: none;
+      outline: none;
+      color: rgb(214, 214, 214);
+      position: relative;
+      top: 45%;
+      transform: translate(0, -50%);
+      padding: 0.2rem 0.3rem;
+      font-size: 0.7rem;
+      font-family: 'Noto Sans';
+      font-weight: 530;
+      height: max-content;
+      cursor: pointer;
+      border-radius: 4px;
+      text-transform: uppercase;
+      transition: background 80ms linear;
+
+      &:hover,
+      &:focus {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+
+.mod-list {
+  background: #131313;
+  padding: 1rem 0;
+  border-radius: 4px;
+
+  .mod-item {
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    background: #212121;
+    padding: 0.4rem 1rem;
+    width: 100%;
+    place-items: center;
+    text-align: start;
+
+    &:hover {
+      color: #DDD;
+      background: #191919;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: red;
+      margin-right: 1rem;
+    }
+  }
+
+  .mod-item.on {
+    &:before {
+      background: green;
+    }
+  }
+}

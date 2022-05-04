@@ -1,0 +1,18 @@
+.logs-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 880px;
+  max-width: 880px;
+  margin: auto;
+  background: #161616;
+  color: white;
+  height: calc(100% - 1rem);
+  margin-top: 1rem;
+  border-radius: 4px;
+  user-select: text;
+
+  .log-line {
+    padding: 0.3rem 0.6rem;
+  }
+}

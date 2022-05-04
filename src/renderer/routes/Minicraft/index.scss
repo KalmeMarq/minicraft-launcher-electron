@@ -1,0 +1,67 @@
+.load-bar {
+  display: none;
+  padding: 0.8rem 0.8rem;
+  background: #262626;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 100ms ease-in-out;
+}
+
+.load-bar.show {
+  display: block;
+  transform: translateY(0%);
+  animation: 100ms opacAnim 1000ms forwards linear;
+  animation-delay: 100ms;
+}
+
+@keyframes opacAnim {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.load-bar p {
+  position: relative;
+  color: white;
+  font-family: 'Noto Sans';
+  font-size: 0.82rem;
+  z-index: 2;
+}
+
+.load-bar-in {
+  background: #0e0e0e;
+  padding: 0rem 0.7rem;
+  height: 30px;
+  display: flex;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.load-bar-prog {
+  position: absolute;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #008542;
+  transition: width 300ms ease-in-out;
+}
+
+
+.load-bar-prog.launching {
+  position: absolute;
+  left: -15%;
+  width: 15%;
+  height: 100%;
+  background: #008542;
+  transition: width 300ms ease-in-out;
+  animation: launching 1500ms infinite linear;
+}
+
+@keyframes launching {
+  0% {
+    left: -15%;
+  }
+  100% {
+    left: 100%;
+  }
+}
