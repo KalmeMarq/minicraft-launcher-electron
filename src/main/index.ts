@@ -2,7 +2,7 @@ import { join } from 'path';
 import os from 'os';
 import { BrowserWindow, app, ipcMain, dialog, shell } from 'electron';
 import isDev from 'electron-is-dev';
-import { mkdirSync, readdir, readdirSync, rmSync } from 'fs';
+import { existsSync, mkdirSync, readdir, readdirSync, rmSync } from 'fs';
 import childp from 'child_process';
 import axios from 'axios';
 import { decode, downloadLibrary, downloadVersion, exists, loadJson, shortSecurePath, writeJson } from './utils';
@@ -20,11 +20,12 @@ import {
   MODS_PATH,
   MOD_LOADER_PATH,
   MOD_LOADER_URL,
-  LIBRARIES_PATH
+  LIBRARIES_PATH,
+  CACHE_PATH
 } from './constants';
 import { Profile, Profiles } from './Profiles';
 import { Version, Versions } from './Versions';
-import { Settings } from './Settings';
+import { Settings, Themes } from './Settings';
 import { PatchNotes } from './PatchNotes';
 import { autoUpdater } from 'electron-updater';
 import { JsonModLoader, JsonModLoaders } from './types';
@@ -34,7 +35,15 @@ app.setPath('crashDumps', join(LAUNCHER_CACHE_PATH, 'Crashpad'));
 app.setPath('cache', LAUNCHER_CACHE_PATH);
 app.setPath('logs', join(LAUNCHER_CACHE_PATH, 'logs'));
 app.setPath('userData', LAUNCHER_CACHE_PATH);
-app.disableHardwareAcceleration();
+
+Themes.load();
+Settings.load();
+
+console.log(Themes);
+
+if (Settings.getDisableHardwareAcceleration()) {
+  app.disableHardwareAcceleration();
+}
 
 if (os.release().startsWith('6.1')) app.disableHardwareAcceleration();
 if (process.platform === 'win32') app.setAppUserModelId(app.getName());
@@ -66,6 +75,11 @@ exists(PATCH_NOTES_PATH_OLD).then((ex) => {
   if (ex) rmSync(PATCH_NOTES_PATH_OLD);
 });
 
+let state: any = {};
+if (existsSync(join(CACHE_PATH, 'config.json'))) {
+  state = loadJson(join(CACHE_PATH, 'config.json'));
+}
+
 const MIN_WIDTH = 1018;
 const MIN_HEIGHT = 640;
 
@@ -82,22 +96,27 @@ let updateDownloaded = false;
 
 function createWindow() {
   window = new BrowserWindow({
-    center: true,
-    width: MIN_WIDTH,
-    height: MIN_HEIGHT,
+    x: state.x ?? undefined,
+    y: state.y ?? undefined,
+    width: state.width ?? MIN_WIDTH,
+    height: state.height ?? MIN_HEIGHT,
     minWidth: MIN_WIDTH,
     minHeight: MIN_HEIGHT,
     title: 'Minicraft Launcher',
     icon: isDev ? join(__dirname, '../..', 'resources/icon.ico') : undefined,
     show: true,
-    backgroundColor: '#1f1f1f',
+    backgroundColor: Settings.getTheme() === 'light' ? '#FFFFFF' : '#1f1f1f',
     resizable: true,
+    fullscreenable: false,
     webPreferences: {
-      safeDialogs: true,
       devTools: isDev,
       preload: join(__dirname, 'preload.js')
     }
   });
+
+  if (state.maximized) {
+    window.maximize();
+  }
 
   const port = process.env.PORT || 3000;
   const url = isDev ? `http://localhost:${port}` : join(__dirname, '../renderer/index.html');
@@ -117,7 +136,6 @@ function createWindow() {
   });
 
   window.menuBarVisible = false;
-  Settings.load();
   Profiles.load();
   Versions.load();
 
@@ -129,6 +147,14 @@ function createWindow() {
   window.on('close', () => {
     Settings.save();
     Profiles.save();
+    state = {
+      x: window.getPosition()[0],
+      y: window.getPosition()[1],
+      width: window.getSize()[0],
+      height: window.getSize()[1],
+      maximized: window.isMaximized()
+    };
+    writeJson(join(CACHE_PATH, 'config.json'), state);
   });
 }
 
@@ -188,6 +214,7 @@ app.on('second-instance', () => {
   }
 });
 
+Themes.registerEvents();
 Profiles.registerEvents();
 Versions.registerEvents();
 Settings.registerEvents();

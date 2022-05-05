@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { app } from 'electron';
 import { copyFileSync, createWriteStream, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import { join, parse } from 'path';
 import { LAUNCHER_TEMP_PATH, LIBRARIES_PATH, VERSIONS_PATH } from './constants';

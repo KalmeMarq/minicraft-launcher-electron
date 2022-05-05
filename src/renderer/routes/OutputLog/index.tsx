@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const SecWin = () => {
+const OutputLog = () => {
   document.title = 'Minicraft game output';
   const [logs, setLogs] = useState<string[]>([]);
 
@@ -11,4 +11,4 @@ const SecWin = () => {
   );
 };
 
-export default SecWin;
+export default OutputLog;

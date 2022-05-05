@@ -24,3 +24,6 @@ release
 logs
 todo.txt
 yarn.lock
+package-lock.json
+log.txt
+fabricloader.log

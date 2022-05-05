@@ -22,7 +22,7 @@ Modal.setAppElement('#root');
 
 const WhatsNewDialog: React.FC<IWhatsNewDialog> = ({ isOpen, onClose }) => {
   const code = useContext(ExtraTranslationContext);
-  const { launcher: notes } = useContext(PatchNotesContext)
+  const { launcher: notes } = useContext(PatchNotesContext);
 
   return (
     <Modal isOpen={isOpen} className="create-modal lnews-modal" overlayClassName="Overlay" onRequestClose={onClose}>
@@ -38,7 +38,7 @@ const WhatsNewDialog: React.FC<IWhatsNewDialog> = ({ isOpen, onClose }) => {
       <main>
         <div className="lnews-container">
           {notes.map((note, i) => (
-            <div className={'lnews-note' + (i === 0 ? ' lastest' : '')}>
+            <div key={note.id} className={'lnews-note' + (i === 0 ? ' lastest' : '')}>
               <div className="lnews-note-cont">
                 <h2>
                   {(() => {

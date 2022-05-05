@@ -31,7 +31,7 @@ const SearchBox: FC<ISearchBox> = ({ value, results, handleEnter, handleFilter, 
           <img src={cancelIcon} />
         </button>
       )}
-      {results && value !== '' && <p className="results">{results} Results</p>}
+      {results !== 0 && value !== '' && <p className="results">{results} Results</p>}
     </div>
   );
 };

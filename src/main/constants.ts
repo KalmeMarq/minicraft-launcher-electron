@@ -10,6 +10,7 @@ export const LAUNCHER_CACHE_PATH_OLD = join(LAUNCHER_PATH, 'webcache');
 export const LAUNCHER_LOGS = join(LAUNCHER_PATH, 'logs');
 export const LAUNCHER_PROFILES_PATH = join(LAUNCHER_PATH, 'launcher_profiles.json');
 export const LAUNCHER_SETTINGS_PATH = join(LAUNCHER_PATH, 'launcher_settings.json');
+export const LAUNCHER_THEMES_PATH = join(LAUNCHER_PATH, 'launcher_themes.json');
 export const VERSIONS_PATH = join(LAUNCHER_PATH, 'versions');
 export const VERSION_MANIFEST_PATH = join(VERSIONS_PATH, 'version_manifest.json');
 export const PATCH_NOTES_PATH = join(CACHE_PATH, 'minicraftPatchNotes.json');

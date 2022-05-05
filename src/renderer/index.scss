@@ -1,3 +1,66 @@
+:root {
+  --mainmenu-background: #262626;
+  --mainmenu-tab-foreground: #FFFFFF;
+  --mainmenu-tab-background-hover: #3d3d3d;
+  --mainmenu-tab-background-active: #383838;
+  --mainmenu-tab-active-marker: #FFFFFF;
+  --mainmenu-tab-focus: #FFFFFF; 
+  --submenu-background: #262626;
+  --submenu-header-foreground: #FFFFFF;
+  --submenu-tab-foreground: #e3e3e3;
+  --submenu-tab-foreground-hover: #c9c9c9;
+  --submenu-tab-foreground-active: #FFFFFF;
+  --submenu-tab-active-marker: #008542;
+  --page-background: #323232;
+  --page-foreground: #FFFFFF;
+  --page-horizontal-line: #494949;
+  --patchnotecard-background: #0F0F0F;
+  --patchnotecard-background-hover: #262626;
+  --patchnotecard-background-active: #131313;
+  --patchnotecard-title: #FFFFFF;
+  --patchnote-h1-foreground: #FFFFFF;
+  --patchnote-h2-foreground: #FFFFFF;
+  --patchnote-h3-foreground: #FFFFFF;
+  --patchnote-h4-foreground: #FFFFFF;
+  --patchnote-h5-foreground: #FFFFFF;
+  --patchnote-p-foreground: #FFFFFF;
+  --patchnote-li-foreground: #FFFFFF;
+  --patchnote-a-foreground: #FFFFFF;
+  --loadingspinner-background: #FFFFFF;
+  --play-banner-shadow: #000000;
+  --playbutton-foreground: #FFFFFF;
+  --playbutton-foreground-disabled: #AAA;
+  --playbutton-border: black;
+  --playbutton-border-active: white;
+  --playbutton-top: #27CE40;
+  --playbutton-top-active: #064D2A;
+  --playbutton-top-disabled: #1B902D;
+  --playbutton-side: #0C6E3D;
+  --playbutton-bottom: #064D2A;
+  --playbutton-bottom-active: #0AA618;
+  --playbutton-bottom-disabled: #04361D;
+  --playbutton-gradient-top: #009147;
+  --playbutton-gradient-top-hover: #0A8F4C;
+  --playbutton-gradient-top-active: #008542;
+  --playbutton-gradient-top-focus: #0A9B51;
+  --playbutton-gradient-top-disabled: #006532;
+  --playbutton-gradient-bottom: #008542;
+  --playbutton-gradient-bottom-hover: #0A9B51;
+  --playbutton-gradient-bottom-active: #009147;
+  --playbutton-gradient-bottom-focus: #0A8F4C;
+  --playbutton-gradient-bottom-disabled: #005D2E;
+  --checkbox-background-on: #008542;
+  --checkbox-background-hover-on: #0DD166;
+  --modal-background: #303030;
+  --modal-title-foreground: #FFFFFF;
+  --modal-horizontal-line: #373737;
+  --scrollbar-background: #262626;
+  --scrollbar-thumb-background: #4d4d4d;
+  --scrollbar-thumb-background-hover: #595959;
+  --textbox-background: #131313;
+  --textbox-background-hover: #0e0e0e;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +93,7 @@ code {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: hsl(0, 0%, 12%);
+  background: var(--mainmenu-background);
 }
 
 .main-app {
@@ -46,17 +109,17 @@ code {
   height: 100%;
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar { 
   width: 8px;
-  background: #262626;
+  background: var(--scrollbar-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(0, 0%, 30%);
+  background: var(--scrollbar-thumb-background);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(0, 0%, 35%);
+  background: var(--scrollbar-thumb-background-hover);
 }
 
 .base-route {
@@ -64,8 +127,9 @@ code {
   position: relative;
   flex-direction: column;
   height: 100%;
-  background: #323232;
+  background: var(--page-background);
   overflow: hidden;
+  color: var(--page-foreground);
 }
 
 .sub-page {
@@ -73,11 +137,12 @@ code {
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-x: hidden;
 }
 
 .line-h {
   width: 100%;
-  background: hsl(0, 0%, 28%);
+  background: var(--page-horizontal-line);
   height: 1px;
   min-height: 1px;
 }

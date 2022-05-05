@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import LoadingSpinner from '../../../../components/LoadingSpinner';
 import { PatchNotesContext } from '../../../../utils/PatchNotesContext';
 import PatchNoteDialog from './components/PatchNoteDialog';
-// import cardTemp from '../../../../assets/card_temp1.png';
 import './index.scss';
 
 export interface Patch {

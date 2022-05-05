@@ -1,6 +1,5 @@
 .general-cont {
   padding: 1.6rem 2rem;
-  color: white;
   font-family: 'Noto Sans Bold';
 
   overflow-y: auto;
@@ -12,7 +11,6 @@
   h3 {
     font-family: 'Noto Sans Bold';
     text-transform: uppercase;
-    color: white;
     font-size: 11px;
     margin-top: 2.2rem;
 
@@ -50,8 +48,8 @@
 
     &:hover {
       input:checked ~ .check-fake {
-        border: 1px solid #0DD166;
-        background: #0DD166;
+        border: 1px solid var(--checkbox-background-hover-on);
+        background: var(--checkbox-background-hover-on);
       }
     }
 
@@ -60,7 +58,6 @@
       top: 0px;
       font-family: 'Noto Sans';
       font-size: 13px;
-      color: white;
       height: 100%;
     }
   }
@@ -97,8 +94,8 @@
       opacity: 0;
       
       &:checked + .check-fake {
-        border-color: #008542;
-        background: #008542;
+        border-color: var(--checkbox-background-on);
+        background: var(--checkbox-background-on);
 
         .check {
           display: block;

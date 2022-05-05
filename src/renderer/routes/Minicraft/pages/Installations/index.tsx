@@ -59,6 +59,15 @@ const InstallationItem: React.FC<IInstallationItem> = ({ profile, show, onDelete
     }
   });
 
+  window.addEventListener('keyup', (ev) => {
+    if (ev.code === 'ArrowDown') {
+    }
+  });
+
+  window.addEventListener('blur', () => {
+    setShowTools(false);
+  });
+
   return (
     <div className="iprofile-item" style={{ display: show ? 'flex' : 'none' }}>
       <button

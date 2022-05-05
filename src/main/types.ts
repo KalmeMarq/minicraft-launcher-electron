@@ -30,3 +30,7 @@ export interface JsonModLoaders {
   providers: Record<string, { path: string; size: number; url: string }>;
   loaders: Record<string, JsonModLoader>;
 }
+
+export interface JsonLauncherThemes {
+  themes: { [key: string]: Record<string, string> };
+}

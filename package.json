@@ -14,7 +14,7 @@
     "url": "https://github.com/KalmeMarq/minicraft-launcher"
   },
   "scripts": {
-    "dev": "concurrently \"npm dev:vite\" \" npm dev:electron\"",
+    "dev": "concurrently \"npm run dev:vite\" \" npm run dev:electron\"",
     "dev:vite": "vite",
     "dev:electron": "npm run build:electron && electron .",
     "build": "npm run build:vite && npm run build:electron",
@@ -29,7 +29,6 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^1.2.0",
     "axios": "^0.26.1",
     "dayjs": "^1.11.1",
     "dompurify": "^2.3.6",
@@ -43,6 +42,7 @@
     "electron-updater": "^5.0.1"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^1.2.0",
     "@types/dompurify": "^2.3.3",
     "@types/node": "^17.0.22",
     "@types/react": "^18.0.8",

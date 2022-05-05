@@ -17,11 +17,11 @@
     transition: background 200ms;
 
     &:hover {
-      background: hsl(0, 0%, 24%);
+      background: var(--mainmenu-tab-background-hover)
     }
 
     &:active {
-      background: hsl(0, 0%, 22%);
+      background: var(--mainmenu-tab-background-active);
     }
 
     &:focus {
@@ -29,8 +29,8 @@
     }
 
     &:focus-visible {
-      border: 1px solid white;
-      background: hsl(0, 0%, 24%);
+      border: 1px solid var(--mainmenu-tab-focus);
+      background: var(--mainmenu-tab-background-hover)
     }
   }
 
@@ -42,7 +42,7 @@
     }
 
     &::before {
-      background: white;
+      background: var(--mainmenu-tab-active-marker);
       transition-property: height;
       transition-duration: 200ms;
       height: 18px;
@@ -85,7 +85,7 @@
     line-height: 1rem;
     text-align: left;
     margin-top: -0.1rem;
-    color: white;
+    color: var(--mainmenu-tab-foreground);
     font-family: 'Noto Sans';
 
     i {
@@ -93,7 +93,7 @@
       text-transform: uppercase;
       width: 100%;
       font-size: 11px;
-      color: white;
+      color: var(--mainmenu-tab-foreground);
     }
 
     span {

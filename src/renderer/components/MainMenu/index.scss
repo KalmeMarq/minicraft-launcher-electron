@@ -1,5 +1,3 @@
-$main-menu-bg: #262626;
-
 .main-menu {
   display: flex;
   flex-direction: column;
@@ -7,7 +5,7 @@ $main-menu-bg: #262626;
   min-width: 180px;
   max-width: 180px;
   height: 100%;
-  background: $main-menu-bg;
+  background: var(--mainmenu-background);
 
   .filler {
     height: 100%;
