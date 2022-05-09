@@ -18,21 +18,13 @@
   },
   "win": {
     "target": [
-      {
-        "target": "nsis",
-        "arch": ["x64", "ia32"]
-      }
+      "nsis",
+      "portable"
     ],
-    "artifactName": "${productName}-${version}-Setup.${ext}",
-    "publish": {
-      "provider": "github",
-      "owner": "KalmeMarq",
-      "repo": "minicraft-launcher",
-      "releaseType": "draft",
-      "channel": "lastest",
-      "private": false,
-      "token": "{env.GH_TOKEN}"
-    }
+    "artifactName": "${productName}-${version}-Setup.${ext}"
+  },
+  "portable": {
+    "artifactName": "${productName}-portable-${version}.${ext}"
   },
   "nsis": {
     "oneClick": false,
@@ -41,12 +33,28 @@
     "deleteAppDataOnUninstall": false
   },
   "mac": {
-    "target": ["dmg"],
+    "category": "public.app-category.utilities",
+    "target": [
+      "dmg",
+      "zip"
+    ],
     "artifactName": "${productName}-${version}-Installer.${ext}"
   },
   "linux": {
-    "target": ["AppImage"],
+    "category": "Utility",
+    "target": [
+      "AppImage",
+      "deb"
+    ],
     "artifactName": "${productName}-${version}-Installer.${ext}"
   },
-  "compression": "maximum"
+  "publish": {
+    "provider": "github",
+    "owner": "KalmeMarq",
+    "repo": "minicraft-launcher",
+    "releaseType": "draft",
+    "channel": "lastest",
+    "private": false,
+    "token": "{env.GH_TOKEN}"
+  }
 }

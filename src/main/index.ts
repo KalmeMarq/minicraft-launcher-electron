@@ -5,6 +5,7 @@ import isDev from 'electron-is-dev';
 import { existsSync, mkdirSync, readdir, readdirSync, rmSync } from 'fs';
 import childp from 'child_process';
 import axios from 'axios';
+import * as log from 'electron-log';
 import { decode, downloadLibrary, downloadVersion, exists, loadJson, shortSecurePath, writeJson } from './utils';
 import {
   VERSIONS_PATH,
@@ -39,7 +40,11 @@ app.setPath('userData', LAUNCHER_CACHE_PATH);
 Themes.load();
 Settings.load();
 
-console.log(Themes);
+log.transports.file.level = 'info';
+log.info('App starting...');
+
+autoUpdater.logger = log;
+autoUpdater.autoDownload = false;
 
 if (Settings.getDisableHardwareAcceleration()) {
   app.disableHardwareAcceleration();
@@ -91,8 +96,6 @@ console.log(`x64: ${os.arch() === 'x64'}`);
 
 let window: BrowserWindow;
 let logOutputWin: BrowserWindow;
-
-let updateDownloaded = false;
 
 function createWindow() {
   window = new BrowserWindow({
@@ -158,6 +161,10 @@ function createWindow() {
   });
 }
 
+autoUpdater.on('checking-for-update', () => {
+  log.info('checking for updates');
+});
+
 autoUpdater.on('update-available', (_event, releaseNotes, releaseName) => {
   window.webContents.send('ipc:update_available');
 
@@ -186,8 +193,20 @@ autoUpdater.on('update-downloaded', (_event, releaseNotes, releaseName) => {
   });
 });
 
+autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = 'Progress: ' + Math.round(progressObj.percent) + '%';
+  log.info(log_message);
+});
+
+autoUpdater.on('error', (err) => {
+  log.info(err);
+});
+
 app.whenReady().then(() => {
   createWindow();
+  window.webContents.on('dom-ready', () => {
+    autoUpdater.checkForUpdatesAndNotify();
+  });
 
   app.on('activate', () => {
     const allWindows = BrowserWindow.getAllWindows();
@@ -201,10 +220,6 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
-});
-
-app.on('quit', () => {
-  if (updateDownloaded) autoUpdater.quitAndInstall();
 });
 
 app.on('second-instance', () => {

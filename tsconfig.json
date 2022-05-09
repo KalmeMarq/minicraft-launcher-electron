@@ -12,11 +12,13 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
+    "removeComments": false,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
+      "@main/*": ["src/main/*"],
       "@renderer/*": ["src/renderer/*"]
     }
   },

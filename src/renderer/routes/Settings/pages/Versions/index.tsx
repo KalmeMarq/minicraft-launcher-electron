@@ -25,7 +25,7 @@ const VersionsPage = () => {
   }, []);
 
   return (
-    <div className="sub-page versions-sp">
+    <div className="sub-page versions-sp left">
       {versions.length === 0 && <LoadingSpinner />}
       {versions.length !== 0 && (
         <div className="filter-section">

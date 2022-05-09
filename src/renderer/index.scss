@@ -133,11 +133,14 @@ code {
 }
 
 .sub-page {
+  top: 83px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow-x: hidden;
+  position: absolute;
+  width: 100%;
 }
 
 .line-h {
@@ -228,4 +231,46 @@ a {
   100% {
     transform: translateX(0%);
   }
+}
+
+/* slideTransition.scss */
+
+.right-to-left-enter {
+  transform: translateX(35%);
+  opacity: 0;
+  transition:all 0.3s ease-in;
+}
+.right-to-left-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.right-to-left-exit {
+  transform: translateX(0);
+  opacity: 0;
+  transition:all 0s ease;
+}
+.right-to-left-exit-active {
+  transform: translateX(-35%);
+  opacity: 0;
+}
+
+.left-to-right-enter {
+  transform: translateX(-35%);
+  opacity: 0;
+  transition:all 0.3s ease;
+}
+.left-to-right-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+}      
+
+.left-to-right-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+.left-to-right-exit-active {
+  transform: translateX(35%);
+  opacity: 0;
+  transition:all 0.3s ease;
 }

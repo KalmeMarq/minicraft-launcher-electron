@@ -16,7 +16,7 @@ const AboutPage = () => {
   const code = useContext(ExtraTranslationContext);
 
   return (
-    <div className="subpage">
+    <div className="sub-page">
       <WhatsNewDialog isOpen={showDialog} onClose={() => setShowDialog(false)} />
       <div className="about-cont">
         <div className="about-section">

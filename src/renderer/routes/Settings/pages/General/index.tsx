@@ -40,7 +40,7 @@ const GeneralPage = () => {
   const { showCommunityTab, availableThemes, applyTheme, keepLauncherOpen, theme, openOutputLog, animatePages, disableHardwareAcceleration, setOption } = useContext(SettingsContext);
 
   return (
-    <div className="sub-page general-cont">
+    <div className="sub-page general-cont left">
       <div className="install-input-cont">
         <label>
           <TL>Language</TL>
@@ -84,17 +84,16 @@ const GeneralPage = () => {
       >
         <TL>Keep the Launcher open while games are running</TL>
       </Checkbox>
-      {/* {false && (
-        <Checkbox
-          value={animatePages}
-          propKey="animatePages"
-          onChange={(v, k) => {
-            setOption(k, v);
-          }}
-        >
-          <TL>Animate transitions between pages in the Launcher</TL>
-        </Checkbox>
-      )} */}
+
+      <Checkbox
+        value={animatePages}
+        propKey="animatePages"
+        onChange={(v, k) => {
+          setOption(k, v);
+        }}
+      >
+        <TL>Animate transitions between pages in the Launcher</TL>
+      </Checkbox>
       <Checkbox
         value={disableHardwareAcceleration}
         propKey="disableHardwareAcceleration"
