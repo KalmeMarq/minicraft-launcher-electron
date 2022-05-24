@@ -1,4 +1,4 @@
-# Minicraft Launcher
+# Minicraft Launcher (Electron version discontinued. See tauri version.)
 
 #### Launcher Settings
 ```ts
